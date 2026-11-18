@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Проекты</h1>
+<a href="{% url 'project_create' %}">+ Добавить проект</a>
+<ul>
+{% for project in projects %}
+    <li style="margin-bottom: 20px;"> <!-- Добавил отступ для красоты -->
+        <!-- Вывод фотографии, если она есть -->
+        {% if project.photo %}
+            <div>
+                <a href="{% url 'project_detail' project.pk %}">
+                    <img src="{{ project.photo.url }}" alt="{{ project.name }}" width="200">
+                </a>
+            </div>
+        {% endif %}
+        
+        <!-- Ссылка на название -->
+        <a href="{% url 'project_detail' project.pk %}">{{ project.name }}</a>
+        | <a href="{% url 'project_update' project.pk %}">Редактировать</a>
+        | <a href="{% url 'project_delete' project.pk %}">Удалить</a>
+    </li>
+{% empty %}
+    <li>Проектов пока нет.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">На главную</a>
+{% endblock %}

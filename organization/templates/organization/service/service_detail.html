@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Детали: Услуги</h1>
+<p><b>ID:</b> {{ service.pk }}</p>
+{% for field in service.fields_list %}
+    <!-- Поля выводятся автоматически в виде списка, но для красоты пропишем основные -->
+{% endfor %}
+<p><b>Название:</b> {{ service }}</p>
+{% if service.photo %}
+    <img src="{{ service.photo.url }}" alt="service" width="300">
+{% endif %}
+<br><br>
+<a href="{% url 'service_list' %}">Назад к списку</a>
+{% endblock %}

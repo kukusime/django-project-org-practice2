@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Детали: Отзывы</h1>
+<p><b>ID:</b> {{ review.pk }}</p>
+{% for field in review.fields_list %}
+    <!-- Поля выводятся автоматически в виде списка, но для красоты пропишем основные -->
+{% endfor %}
+<p><b>Название:</b> {{ review }}</p>
+{% if review.photo %}
+    <img src="{{ review.photo.url }}" alt="review" width="300">
+{% endif %}
+<br><br>
+<a href="{% url 'review_list' %}">Назад к списку</a>
+{% endblock %}

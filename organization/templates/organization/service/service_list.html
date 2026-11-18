@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Услуги</h1>
+<a href="{% url 'service_create' %}">+ Добавить</a>
+<ul>
+{% for service in services %}
+    <li>
+        <a href="{% url 'service_detail' service.pk %}">{{ service }}</a>
+        | <a href="{% url 'service_update' service.pk %}">Редактировать</a>
+        | <a href="{% url 'service_delete' service.pk %}">Удалить</a>
+    </li>
+{% empty %}
+    <li>Нет данных.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">На главную</a>
+{% endblock %}

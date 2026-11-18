@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Детали: Клиенты</h1>
+<p><b>ID:</b> {{ client.pk }}</p>
+{% for field in client.fields_list %}
+    <!-- Поля выводятся автоматически в виде списка, но для красоты пропишем основные -->
+{% endfor %}
+<p><b>Название:</b> {{ client }}</p>
+{% if client.photo %}
+    <img src="{{ client.photo.url }}" alt="client" width="300">
+{% endif %}
+<br><br>
+<a href="{% url 'client_list' %}">Назад к списку</a>
+{% endblock %}

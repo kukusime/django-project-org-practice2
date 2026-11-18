@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ project.name }}</h1>
+{% if project.photo %}
+    <img src="{{ project.photo.url }}" alt="{{ project.name }}" width="400">
+{% endif %}
+<p><b>Описание:</b> {{ project.description }}</p>
+<p><b>Категория:</b> {{ project.category.name }}</p>
+<p><b>Клиент:</b> {{ project.client.name }}</p>
+<p><b>Бюджет:</b> {{ project.budget }} руб.</p>
+<p><b>Дата начала:</b> {{ project.start_date }}</p>
+<p><b>Статус:</b> {% if project.is_completed %}Завершён{% else %}В работе{% endif %}</p>
+<br>
+<a href="{% url 'project_list' %}">Назад к списку</a>
+{% endblock %}
